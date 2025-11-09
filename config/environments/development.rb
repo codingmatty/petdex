@@ -6,6 +6,13 @@ Rails.application.configure do
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
+  config.hosts << ENV["PREVIEW_HOST"] if ENV["PREVIEW_HOST"].present?
+
+  # Allow iframe embedding for development/preview
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
+
   # Do not eager load code on boot.
   config.eager_load = false
 
