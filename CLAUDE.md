@@ -1,8 +1,8 @@
-# Pet Manager - Rails Application
+# PetDex - Rails Application
 
 ## Project Overview
 
-Pet Manager is a Rails 8.1 application designed to help pet owners manage comprehensive pet care records. The application supports multiple pet types (dogs, cats, horses, and others) and provides a centralized platform for tracking medical history, prescriptions, care instructions, photos, and general notes.
+PetDex is a Rails 8.1 application designed to help pet owners manage comprehensive pet care records. The application supports multiple pet types (dogs, cats, horses, and others) and provides a centralized platform for tracking medical history, prescriptions, care instructions, photos, and general notes.
 
 ## Tech Stack
 
@@ -245,18 +245,6 @@ If exposing an API:
 - Comprehensive API documentation
 
 ## Environment Setup
-
-### Development
-```bash
-# Install dependencies
-bundle install
-
-# Setup database
-rails db:create db:migrate db:seed
-
-# Start development server
-bin/dev
-```
 
 ### Configuration Files
 - `config/database.yml` - Database configuration

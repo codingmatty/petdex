@@ -1,0 +1,46 @@
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col w-full max-w-md">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold">Reset Password</h1>
+      <p class="py-4">Enter your new password below</p>
+    </div>
+
+    <div class="card w-full shadow-2xl bg-base-100">
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "space-y-4" }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="form-control">
+            <%= f.label :password, class: "label" do %>
+              <span class="label-text">New Password</span>
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "input input-bordered w-full", placeholder: "At least 6 characters" %>
+            <% if @minimum_password_length %>
+              <label class="label">
+                <span class="label-text-alt">Minimum <%= @minimum_password_length %> characters</span>
+              </label>
+            <% end %>
+          </div>
+
+          <div class="form-control">
+            <%= f.label :password_confirmation, class: "label" do %>
+              <span class="label-text">Confirm New Password</span>
+            <% end %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full", placeholder: "Re-enter your new password" %>
+          </div>
+
+          <div class="form-control mt-6">
+            <%= f.submit "Change My Password", class: "btn btn-primary w-full" %>
+          </div>
+        <% end %>
+
+        <div class="divider">OR</div>
+
+        <div class="text-center">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
