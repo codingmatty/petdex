@@ -1,0 +1,22 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <%= render 'pets/detail_item', label: 'Species', value: pet.species %>
+  <%= render 'pets/detail_item', label: 'Breed', value: pet.breed.presence || "Not specified" %>
+  <%= render 'pets/detail_item', label: 'Birth Date', value: pet.birth_date&.strftime("%B %d, %Y") || "Not specified" %>
+
+  <div>
+    <div class="text-sm text-base-content/60 mb-1">Age</div>
+    <div class="text-lg font-medium">
+      <% if pet.birth_date %>
+        <%= ((Time.now - pet.birth_date.to_time) / 1.year).floor %> years old
+      <% else %>
+        Not specified
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'pets/detail_item', label: 'Adoption Date', value: pet.adoption_date&.strftime("%B %d, %Y") || "Not specified" %>
+  <%= render 'pets/detail_item', label: 'Microchip Number', value: pet.microchip_number.presence || "Not specified" %>
+  <%= render 'pets/detail_item', label: 'Sex', value: pet.sex.presence || "Not specified" %>
+  <%= render 'pets/detail_item', label: 'Neutered', value: pet.neutered ? "Yes" : "No" %>
+  <%= render 'pets/detail_item', label: 'Color Markings', value: pet.color_markings.presence || "Not specified" %>
+</div>

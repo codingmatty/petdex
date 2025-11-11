@@ -1,0 +1,17 @@
+<%= form_with(model: [pet, pet.notes.build], class: "mb-6 space-y-4") do |form| %>
+  <div class="form-control">
+    <%= form.label :note_date, class: "label" do %>
+      <span class="label-text">Date</span>
+    <% end %>
+    <%= form.date_field :note_date, value: Date.today, class: "input input-bordered w-full" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :content, class: "label" do %>
+      <span class="label-text">Note</span>
+    <% end %>
+    <%= form.text_area :content, rows: 3, class: "textarea textarea-bordered w-full", placeholder: "Add a note about your pet..." %>
+  </div>
+
+  <%= form.submit "Add Note", class: "btn btn-primary" %>
+<% end %>

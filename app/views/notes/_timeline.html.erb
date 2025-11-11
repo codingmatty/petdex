@@ -1,0 +1,13 @@
+<% persisted_notes = pet.notes.reject(&:new_record?) %>
+
+<% if persisted_notes.any? %>
+  <ul class="timeline timeline-vertical timeline-compact">
+    <% persisted_notes.each_with_index do |note, index| %>
+      <%= render 'notes/timeline_item', note: note, pet: pet, index: index, total: persisted_notes.size %>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="text-center py-8 text-base-content/60">
+    <p>No notes yet. Add your first note above!</p>
+  </div>
+<% end %>
