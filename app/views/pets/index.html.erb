@@ -1,0 +1,58 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-8">
+    <div>
+      <h1 class="text-3xl font-bold">My Pets</h1>
+      <p class="mt-2 text-base-content/70">A list of all your pets.</p>
+    </div>
+    <%= link_to new_pet_path, class: "btn btn-primary" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Pet
+    <% end %>
+  </div>
+
+  <% if @pets.any? %>
+    <div class="overflow-x-auto">
+      <table class="table table-zebra w-full">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Breed</th>
+            <th>Birth Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pets.each do |pet| %>
+            <tr>
+              <td>
+                <%= link_to pet.name, pet, class: "link link-primary font-medium" %>
+              </td>
+              <td><%= pet.species %></td>
+              <td><%= pet.breed %></td>
+              <td><%= pet.birth_date&.strftime("%B %d, %Y") %></td>
+              <td>
+                <div class="flex gap-2 justify-end">
+                  <%= link_to "Edit", edit_pet_path(pet), class: "btn btn-sm btn-ghost" %>
+                  <%= button_to "Delete", pet_path(pet), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-error btn-outline" %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="hero min-h-[400px] bg-base-200 rounded-box">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h2 class="text-2xl font-bold">No pets yet</h2>
+          <p class="py-6">Get started by adding your first pet to your collection.</p>
+          <%= link_to "Add Your First Pet", new_pet_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
         <div class="space-y-4">
           <p class="text-xl">Hello, <%= current_user.email %>!</p>
           <div class="flex gap-4 justify-center">
-            <button class="btn btn-primary btn-lg">My Pets</button>
+            <%= button_to "My Pets", pets_path, method: :get, class: "btn btn-primary btn-lg" %>
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-outline btn-lg" %>
           </div>
         </div>

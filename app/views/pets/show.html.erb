@@ -1,0 +1,85 @@
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h1 class="card-title text-3xl"><%= @pet.name %></h1>
+          <p class="text-base-content/70"><%= @pet.species %></p>
+        </div>
+        <div class="flex gap-2">
+          <%= link_to edit_pet_path(@pet), class: "btn btn-outline" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            Edit
+          <% end %>
+          <%= button_to pet_path(@pet), method: :delete, data: { turbo_confirm: "Are you sure you want to delete #{@pet.name}?" }, class: "btn btn-error btn-outline" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            Delete
+          <% end %>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Species</div>
+          <div class="text-lg font-medium"><%= @pet.species %></div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Breed</div>
+          <div class="text-lg font-medium"><%= @pet.breed.presence || "Not specified" %></div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Birth Date</div>
+          <div class="text-lg font-medium"><%= @pet.birth_date&.strftime("%B %d, %Y") || "Not specified" %></div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Age</div>
+          <div class="text-lg font-medium">
+            <% if @pet.birth_date %>
+              <%= ((Time.now - @pet.birth_date.to_time) / 1.year).floor %> years old
+            <% else %>
+              Not specified
+            <% end %>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Adoption Date</div>
+          <div class="text-lg font-medium"><%= @pet.adoption_date&.strftime("%B %d, %Y") || "Not specified" %></div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Microchip Number</div>
+          <div class="text-lg font-medium"><%= @pet.microchip_number.presence || "Not specified" %></div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Sex</div>
+          <div class="text-lg font-medium"><%= @pet.sex.presence || "Not specified" %></div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Neutered</div>
+          <div class="text-lg font-medium"><%= @pet.neutered ? "Yes" : "No" %></div>
+        </div>
+
+        <div>
+          <div class="text-sm text-base-content/60 mb-1">Color Markings</div>
+          <div class="text-lg font-medium"><%= @pet.color_markings.presence || "Not specified" %></div>
+        </div>
+      </div>
+
+      <div class="card-actions justify-end mt-6">
+        <%= link_to "Back to Pets", pets_path, class: "btn btn-ghost" %>
+      </div>
+    </div>
+  </div>
+</div>

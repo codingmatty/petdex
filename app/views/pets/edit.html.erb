@@ -1,0 +1,12 @@
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold">Edit <%= @pet.name %></h1>
+    <p class="mt-2 text-base-content/70">Update your pet's information below.</p>
+  </div>
+
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <%= render "form", pet: @pet %>
+    </div>
+  </div>
+</div>

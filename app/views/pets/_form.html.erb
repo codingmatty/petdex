@@ -1,0 +1,83 @@
+<%= form_with(model: pet, class: "space-y-4") do |form| %>
+  <% if pet.errors.any? %>
+    <div class="alert alert-error">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <div>
+        <h3 class="font-bold">Please fix the following errors:</h3>
+        <ul class="list-disc ml-5 mt-1">
+          <% pet.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-control">
+    <%= form.label :name, class: "label" do %>
+      <span class="label-text">Name</span>
+    <% end %>
+    <%= form.text_field :name, class: "input input-bordered w-full", placeholder: "Enter pet's name" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :species, class: "label" do %>
+      <span class="label-text">Species</span>
+    <% end %>
+    <%= form.text_field :species, class: "input input-bordered w-full", placeholder: "e.g., Dog, Cat, Bird" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :breed, class: "label" do %>
+      <span class="label-text">Breed (optional)</span>
+    <% end %>
+    <%= form.text_field :breed, class: "input input-bordered w-full", placeholder: "Enter breed" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :birth_date, class: "label" do %>
+      <span class="label-text">Birth Date (optional)</span>
+    <% end %>
+    <%= form.date_field :birth_date, class: "input input-bordered w-full" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :adoption_date, class: "label" do %>
+      <span class="label-text">Adoption Date (optional)</span>
+    <% end %>
+    <%= form.date_field :adoption_date, class: "input input-bordered w-full" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :microchip_number, class: "label" do %>
+      <span class="label-text">Microchip Number (optional)</span>
+    <% end %>
+    <%= form.text_field :microchip_number, class: "input input-bordered w-full" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :sex, class: "label" do %>
+      <span class="label-text">Sex (optional)</span>
+    <% end %>
+    <%= form.text_field :sex, class: "input input-bordered w-full" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :neutered, class: "label" do %>
+      <span class="label-text">Neutered (optional)</span>
+    <% end %>
+    <%= form.check_box :neutered, class: "toggle toggle-primary" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :color_markings, class: "label" do %>
+      <span class="label-text">Color Markings (optional)</span>
+    <% end %>
+    <%= form.text_area :color_markings, class: "textarea textarea-bordered w-full" %>
+  </div>
+
+  <div class="flex gap-4 pt-4">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", pets_path, class: "btn btn-ghost" %>
+  </div>
+<% end %>
